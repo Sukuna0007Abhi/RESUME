@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhijit Das - Professional Developer & AI/ML Enthusiast</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .resume-card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: slideUp 1s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-section {
+            background: var(--gradient);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="25" cy="75" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            border: 5px solid rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(45deg, #fff, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .sidebar {
+            space-y: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-item:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .experience-item, .project-item {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .experience-item:hover, .project-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow);
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .description {
+            line-height: 1.6;
+        }
+
+        .description ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .description li {
+            margin-bottom: 5px;
+        }
+
+        .achievement-item {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float-around 15s infinite linear;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: -5s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float-around {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+        }
+
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+
+        .education-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .degree {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .institution {
+            color: var(--text-secondary);
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="resume-card">
+            <!-- Header Section -->
+            <div class="header-section">
+                <div class="profile-img">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h1 class="name">ABHIJIT DAS</h1>
+                <p class="title">Professional Developer & AI/ML Enthusiast</p>
+                <div class="contact-info">
+                    <a href="tel:9062715859" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>9062715859</span>
+                    </a>
+                    <a href="mailto:appsonly310@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>appsonly310@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhijit-das-02098035b" class="contact-item" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/Sukuna0007Abhi" class="contact-item" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bangalore</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Summary -->
+                    <div class="section">
+                        <h2 class="section-title">Professional Summary</h2>
+                        <p>Results-driven professional web developer with a passion for AI and machine learning. Experienced in Python, Linux, and Raspberry Pi with intelligence in Rust and Python. Complemented by extensive experience in SEO and network marketing. Successfully managed various projects as a freelancer while contributing to major open-source developments.</p>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="section">
+                        <h2 class="section-title">Technical Skills</h2>
+                        <div class="skills-grid">
+                            <div class="skill-item">Python</div>
+                            <div class="skill-item">JavaScript</div>
+                            <div class="skill-item">Rust</div>
+                            <div class="skill-item">Golang</div>
+                            <div class="skill-item">Java</div>
+                            <div class="skill-item">TypeScript</div>
+                            <div class="skill-item">React</div>
+                            <div class="skill-item">Next.js</div>
+                            <div class="skill-item">MERN Stack</div>
+                            <div class="skill-item">Flutter</div>
+                            <div class="skill-item">Docker</div>
+                            <div class="skill-item">Kubernetes</div>
+                            <div class="skill-item">Linux</div>
+                            <div class="skill-item">Raspberry Pi</div>
+                            <div class="skill-item">Blockchain</div>
+                            <div class="skill-item">SEO</div>
+                            <div class="skill-item">Email Marketing</div>
+                            <div class="skill-item">GitHub</div>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="section">
+                        <h2 class="section-title">Education</h2>
+                        <div class="education-item">
+                            <div class="degree">B.Tech</div>
+                            <div class="institution">Polaris School of Technology</div>
+                            <div class="date">April 2024 - January 2028</div>
+                            <div class="location">Bangalore</div>
+                        </div>
+                        <div class="education-item">
+                            <div class="degree">Bachelor of Science</div>
+                            <div class="institution">IIT Madras</div>
+                            <div class="date">April 2024 - April 2028</div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="section">
+                        <h2 class="section-title">Key Achievements</h2>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🏆</div>
+                            <div>
+                                <strong>PI Blockchain Hackathon Winner</strong><br>
+                                Won the PI Blockchain Hackathon and earned 250 PI coins
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🌟</div>
+                            <div>
+                                <strong>GSOC'24 Contributor</strong><br>
+                                Almost cracked GSOC'24 with significant contributions
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="main-section">
+                    <!-- Experience -->
+                    <div class="section">
+                        <h2 class="section-title">Professional Experience</h2>
+                        
+                        <div class="experience-item">
+                            <div class="job-title">Project Contributor</div>
+                            <div class="company">Rocket.Chat</div>
+                            <div class="date">December 2024 - April 2025</div>
+                            <div class="description">
+                                <ul>
+                                    <li>Contributed to GSOC open-source projects</li>
+                                    <li>Worked on Docker issues and container optimization</li>
+                                    <li>Established efficient systems for tracking project progress</li>
+                                    <li>Enabled better decision-making and faster project adjustments</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="job-title">Full Stack Developer</div>
+                            <div class="company">Freelancer</div>
+                            <div class="date">January 2023 - Present</div>
+                            <div class="description">
+                                <ul>
+                                    <li>Developed multiple GitHub projects including web scrapers and chatbots</li>
+                                    <li>Built Smart Mirror using Linux and Raspberry Pi</li>
+                                    <li>Implemented NAS (Network Attached Storage) solutions</li>
+                                    <li>Created CI/CD pipelines on Kubernetes</li>
+                                    <li>Developed URL Shortener Service using Golang</li>
+                                    <li>Built 3D and traditional portfolio websites</li>
+                                    <li>Created project management app using TypeScript and Next.js</li>
+                                    <li>Developed Calorie AI app using MERN stack and Flutter</li>
+                                    <li>Solved 250+ LeetCode problems</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="job-title">SEO Analyst & Digital Marketer</div>
+                            <div class="company">Upwork.com</div>
+                            <div class="date">January 2023 - Present</div>
+                            <div class="description">
+                                <ul>
+                                    <li>Provided professional coding and marketing services</li>
+                                    <li>Worked as copywriter and email marketer</li>
+                                    <li>Collaborated with cross-functional teams on digital marketing campaigns</li>
+                                    <li>Developed comprehensive SEO, PPC, and social media strategies</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="job-title">AI Solutions Intern</div>
+                            <div class="company">Outlier</div>
+                            <div class="date">February 2024 - Present (Remote)</div>
+                            <div class="description">
+                                <ul>
+                                    <li>Focused on AI solutions development</li>
+                                    <li>Analyzed complex problems and developed team solutions</li>
+                                    <li>Gained hands-on experience in various software programs</li>
+                                    <li>Increased proficiency and expanded technical skill set</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notable Projects -->
+                    <div class="section">
+                        <h2 class="section-title">Featured Projects</h2>
+                        
+                        <div class="project-item">
+                            <div class="job-title">Smart Mirror</div>
+                            <div class="date">November 2024 - Present</div>
+                            <div class="description">
+                                Created an interactive smart mirror displaying time, weather, news, and calendar updates using Linux, Raspberry Pi, JavaScript, and Python. Involved Linux customization, hardware integration, and software development.
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="job-title">Network Attached Storage (NAS)</div>
+                            <div class="date">December 2024 - Present</div>
+                            <div class="description">
+                                Built a personal cloud storage solution using Raspberry Pi. Gained expertise in Linux file systems, user management, network configuration, and specialized NAS solutions like OpenMediaVault.
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="job-title">Android Password Manager</div>
+                            <div class="date">March 2025 - Present</div>
+                            <div class="description">
+                                Developed a secure Android password manager using Android's Keystore system for encryption and secure local data storage. Implemented robust security practices for credential management.
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="job-title">Web Scraper</div>
+                            <div class="date">February 2025 - Present</div>
+                            <div class="description">
+                                Built a comprehensive web scraping tool using Python, requests, and BeautifulSoup. Implemented ethical scraping practices, rate limiting, and data cleaning processes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="download-btn" onclick="downloadResume()">
+        <i class="fas fa-download"></i> Download PDF
+    </button>
+
+    <script>
+        // Smooth scrolling animation
+        function animateOnScroll() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'all 0.8s ease';
+                observer.observe(section);
+            });
+        }
+
+        // Skill items hover animation
+        function initSkillAnimations() {
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'translateY(-5px) scale(1.05)';
+                });
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Download resume function
+        function downloadResume() {
+            // In a real implementation, this would trigger a PDF download
+            alert('PDF download would be triggered here. In a real implementation, you would generate or serve a PDF version of the resume.');
+        }
+
+        // Parallax effect for floating elements
+        function initParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                const floatingElements = document.querySelector('.floating-elements');
+                if (floatingElements) {
+                    floatingElements.style.transform = `translateY(${rate}px)`;
+                }
+            });
+        }
+
+        // Initialize all animations and interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            animateOnScroll();
+            initSkillAnimations();
+            initParallax();
+        });
+
+        // Add typing effect to name
+        function typeWriter() {
+            const nameElement = document.querySelector('.name');
+            const text = nameElement.textContent;
+            nameElement.textContent = '';
+            nameElement.style.opacity = '1';
+            
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    nameElement.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100);
+                }
+            }
+            setTimeout(type, 1000);
+        }
+
+        // Initialize typing effect
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
